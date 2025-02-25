@@ -1,13 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./Login";
-import Profile from "./Profile";
-import Register from "./Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token"); // Проверяем, есть ли токен
 
   return (
+    <AuthProvider>
     <Router>    
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -19,6 +21,7 @@ function App() {
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 
