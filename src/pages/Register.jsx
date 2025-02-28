@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {register as authREgister} from "../services/authService"
+import "../styles/register.css"
 
 function Register() {
   const [name, setUsername] = useState("");
@@ -21,18 +21,19 @@ function Register() {
       const response = await authREgister(name, email, phone_number, password, confirm_password)
       console.log(response);
       localStorage.setItem("token", response.data.token);
-      navigate("/login");
+      localStorage.setItem("email", email);
+      navigate("/otp");
     } catch (err) {
       setError("Ошибка регистрации: " + (err.response?.data?.message || "Проверьте введённые данные"));
     }
   };
 
   return (
-    <div>
+    <div className="register-container">
       <h2>Регистрация</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleRegister}>
-        <div>
+        <div className="form-group">
           <label>Имя пользователя:</label>
           <input
             type="text"
@@ -42,7 +43,7 @@ function Register() {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
@@ -52,17 +53,17 @@ function Register() {
             required
           />
         </div>
-        <div>
-          <label>Phone nymber:</label>
+        <div className="form-group">
+          <label>Номер телефона:</label>
           <input
-            type="phone number"
+            type="tel"
             placeholder="Введите номер телефона"
             value={phone_number}
             onChange={(e) => setPhone_number(e.target.value)}
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Пароль:</label>
           <input
             type="password"
@@ -72,17 +73,19 @@ function Register() {
             required
           />
         </div>
-        <div>
-          <label>Повторите Пароль:</label>
+        <div className="form-group">
+          <label>Повторите пароль:</label>
           <input
             type="password"
-            placeholder="Введите пароль"
+            placeholder="Повторите пароль"
             value={confirm_password}
-            onChange={(e) => setConfirm_password (e.target.value)}
+            onChange={(e) => setConfirm_password(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" className="register-btn">
+          Зарегистрироваться
+        </button>
       </form>
     </div>
   );

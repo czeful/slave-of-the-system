@@ -25,9 +25,9 @@ function Login() {
       setError("Ошибка авторизации: " + (err.response?.data?.message || "Проверьте данные"));
     }
   };
-  const handleRegistr = () => {
-        navigate("/register");
-  }
+  // const handleRegistr = () => {
+  //       navigate("/register");
+  // }
 
   return (
     <div className="auth-container">

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
+import OTPForm from "./pages/OTPForm";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/otp" element={<OTPForm />}/>
         <Route
           path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}

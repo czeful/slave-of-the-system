@@ -13,3 +13,8 @@ export const register = async (name, email, phone_number, password, confirm_pass
 export const logout = () =>{
     localStorage.removeItem("token");
 };
+
+export const verifyOTP = async (email, otp) => {
+    console.log("Отправка verifyOTP с:", email, otp);
+    return axios.post(`${API_URL}/verify-otp`, { email, otp });
+  };
