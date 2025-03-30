@@ -1,0 +1,144 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Контейнер профиля */
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f0f2f5;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #3498db;
+    padding: 10px 20px;
+    color: white;
+    font-size: 18px;
+  }
+  
+  .navbar-logo {
+    font-weight: bold;
+    font-size: 22px;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+  
+  .navbar-links button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .navbar-links button:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Контейнер с контентом */
+  .profile-content {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    flex: 1;
+  }
+  
+  /* Левый блок с аватаром и информацией */
+  .profile-left {
+    width: 30%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .profile-header {
+    position: relative;
+  }
+  
+  .cover-photo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid white;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+  }
+  
+  .profile-info h2 {
+    font-size: 22px;
+    margin-top: 60px;
+  }
+  
+  .profile-info p {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  /* Правый блок для дополнительных данных */
+  .profile-right {
+    width: 65%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    margin-left: 20px;
+  }
+  
+  .profile-right h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  
+  /* Кнопки */
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  .edit-btn {
+    background: #3498db;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background: #2980b9;
+  }
+  
+  .logout-btn {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .logout-btn:hover {
+    background: #c0392b;
+  }
+  
+  

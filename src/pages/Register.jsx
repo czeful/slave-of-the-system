@@ -6,25 +6,30 @@ import "../styles/register.css"
 function Register() {
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [phone_number, setPhone_number] = useState("")
+  // const [phone_number, setPhone_number] = useState("")
   const [password, setPassword] = useState("");
-  const [confirm_password, setConfirm_password] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    console.log("Регистрация началась..."); // ✅ Должно появиться в консоли
+
     setError("");
 
     try {
       // Отправляем данные регистрации на API
-      const response = await authREgister(name, email, phone_number, password, confirm_password)
-      console.log(response);
+      console.log("Отправляем данные на сервер:", { name, email, password });
+      navigate("/login");
+      const response = await authREgister(name, email, password)
+      console.log("Ответ от сервера:", response.data);
+      
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", email);
-      navigate("/otp");
     } catch (err) {
       setError("Ошибка регистрации: " + (err.response?.data?.message || "Проверьте введённые данные"));
+
     }
   };
 
@@ -54,32 +59,12 @@ function Register() {
           />
         </div>
         <div className="form-group">
-          <label>Номер телефона:</label>
-          <input
-            type="tel"
-            placeholder="Введите номер телефона"
-            value={phone_number}
-            onChange={(e) => setPhone_number(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
           <label>Пароль:</label>
           <input
             type="password"
             placeholder="Введите пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Повторите пароль:</label>
-          <input
-            type="password"
-            placeholder="Повторите пароль"
-            value={confirm_password}
-            onChange={(e) => setConfirm_password(e.target.value)}
             required
           />
         </div>
